@@ -1,0 +1,187 @@
+html,body {
+  height:100%;
+  width: 100%;
+  font-family: 'Pacifico', cursive;
+  font-family: 'Permanent Marker', cursive;
+  background-color: #040a14;
+  color: #8c96c6;
+}
+.container-fluid{
+  margin:5px;
+}
+.my-row {
+  border: 3px solid red;
+}
+.my-col {
+  border: 3px dotted blue;
+}
+h6{
+	font-size: 20px;
+  color:#88419d;
+  text-align: center;
+  font-weight: bold;
+}
+
+span{
+  font-size:10px;
+  color: white;
+}
+
+.box select{
+  background: #8c96c6;
+  color:black;
+  padding:3px;
+  font-weight: bold;
+  width:110px;
+  height: 20px;
+  font-size:9px;
+  box-shadow:0 5px 25px rgba(0,0,0,0.2);
+  outline:none;
+}
+p{
+  font-size:10px;
+  margin:2px;
+  color: white;
+}
+
+.axis .domain {
+  stroke: white;
+}
+.axis .tick line {
+  stroke: white;
+  stroke-width: 0.5;
+  stroke-dasharray: 4, 2;
+  fill:white;
+}
+.tick text {
+  fill:white;
+  
+}
+h5{
+  font-size:14px;
+  color:white;
+  text-align: center;
+}
+#eventhandler{
+     margin: 0 auto;
+}
+
+
+#labelleft, #labelright {
+  dominant-baseline:hanging;
+}
+
+#labelleft {
+  text-anchor: end;
+  font-size:20px;
+}
+
+rect.selection {
+  stroke: none;
+  fill: #00699d;
+  fill-opacity: 0.5;
+}
+
+#labelright {
+  text-anchor: start;
+  font-size:20px;
+}
+
+.selected-header {
+  color: #8c96c6 ;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.selected-body {
+  overflow: clip;
+  font-size: 0.6em;
+  cursor: auto;
+  text-align: auto;
+}
+img {
+  padding: 7px; 
+  width: 120px; 
+  height:50px;
+  float: left;
+}
+
+.selected-title {
+  font-weight: bold;
+  
+}
+
+.selected-element {
+  margin: 0.5em;
+  padding: 0.5em;
+  font-size:10px;
+  transition: background-color 200ms ease;
+}
+.selected-element:hover {
+  background-color: #8c96c6;
+}
+.selected-element:hover p {
+  color:black;
+  font-size:12px;
+}
+.selected-element:hover .card-title {
+  color:black;
+  font-size:12px;
+}
+
+h2{
+  font-size:12px;
+  color:white;
+  margin-left: 5px;
+}
+
+.line {
+  fill: none;
+  stroke-width: 2px;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus circle {
+  fill: #F1F3F3;
+  stroke: #777;
+  stroke-width: 3px;
+}
+  
+.hover-line {
+  stroke: #777;
+  stroke-width: 2px;
+  stroke-dasharray: 3,3;
+}
+div.tooltip {
+  color: white;
+  position: absolute;
+  text-align: center;
+  text-anchor: middle;
+  width: 100px;
+  height: 40px;
+  padding: 1px;
+  font: 11px 'Pacifico', cursive;;
+  background: rgba(0,0,0,.8);
+  border: 2px solid white;
+  pointer-events: none;
+}
+#div_checks {
+  height: 150px;
+  overflow-y: scroll;
+  cursor: auto;
+  text-align: auto;
+  
+}
+#filteredList {
+  height: 150px;
+  overflow-y: scroll;
+  cursor: auto;
+  text-align: auto;
+  
+}
