@@ -152,6 +152,14 @@ function mouseout() {
      
 }
 
+function mouseclick(){
+    const data_clicked = d3.select(this).data()[0]
+    radialChart.dataFiltered.indexOf(data_clicked) === -1 ? radialChart.dataFiltered.push(data_clicked) : console.log("This item already exists");
+    
+    radialChart.updateVis();
+
+}
+
 function updateSelected(data) {
     var vis = this;
     var mechanic = {
@@ -193,6 +201,7 @@ function updateSelected(data) {
                     )
                     .on('mouseover', mouseover)
                     .on('mouseout', mouseout)
+                    .on('click',mouseclick)
         );
 }
 
