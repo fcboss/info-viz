@@ -5,10 +5,14 @@ RadialChart = function (_parentElement) {
 };
 
 RadialChart.prototype.initVis = function () {
-    var vis = this;
+	var vis = this;
+	const center_x = 200;
+	const center_y = 140;
+	vis.center_x = center_x;
+	vis.center_y = center_y;
 
 	vis.svg = d3.select(vis.parentElement).append("svg")
-		.attr("width", 310)
+		.attr("width", center_x + 180)
 		.attr("height", 300);
 	vis.svg_legend = d3.select(vis.parentElement).append("svg")
 		.attr("width", 400)
@@ -25,28 +29,22 @@ RadialChart.prototype.initVis = function () {
         
 	vis.ticks = [2,4,6,8,10];
 
+
 	vis.ticks.forEach(t =>
 		vis.svg.append("circle")
-		.attr("cx", 140)
-		.attr("cy", 140)
+		.attr("cx", center_x)
+		.attr("cy", center_y)
 		.attr("fill", "none")
 		.attr("stroke", "gray")
 		.attr("r", vis.radialScale(t))
 	);
 
-	vis.ticks.forEach(t =>
-		vis.svg.append("text")
-		.attr("x", 140)
-		.attr("y", 140 - vis.radialScale(t))
-		.attr("fill","white")
-		.attr("font-size","10px")
-		.text(t.toString())
-	);
+
 
     function angleToCoordinate(angle, value){
 		let x = Math.cos(angle) * value;
 		let y = Math.sin(angle) * value;
-		return {"x": 140 + x, "y": 140 - y};
+		return {"x": center_x + x, "y": center_y - y};
     }
     vis.angleToCoordinate = angleToCoordinate;
 
@@ -64,10 +62,13 @@ RadialChart.prototype.initVis = function () {
 		//vis.feat_axis[i].domain(Array(feat_max_min[i][0]*0.8,feat_max_min[i][1]*1.2))
 		//.range([0,100]);
 
+
+
+
 		//draw axis line
 		vis.svg.append("line")
-		.attr("x1", 140)
-		.attr("y1", 140)
+		.attr("x1", center_x)
+		.attr("y1", center_y)
 		.attr("x2", line_coordinate.x)
 		.attr("y2", line_coordinate.y)
 		.attr("stroke","white");
@@ -118,8 +119,10 @@ RadialChart.prototype.updateVis = function () {
         let ft_name = vis.features[i];
         feat_max_min.push(d3.extent(filteredData, function (d) { return d[ft_name]; }))
 	    vis.feat_axis[i].domain(Array(feat_max_min[i][0]*0.9,feat_max_min[i][1]*1.1))
+		
+	}
+	
 
-    }
 
 
     let line = d3.line()
@@ -161,7 +164,7 @@ RadialChart.prototype.updateVis = function () {
 				.attr("d",line)
 				.attr("fill",(d,i) => color(colors[i]))
 				.attr("fill-opacity", 0.3)
-				.attr("stroke-width", 3)
+				.attr("stroke-width", 1)
 				.attr("stroke", (d,i) => color(colors[i]))
 				.attr("stroke-opacity", 1)
 				.on('mouseover', function (d,i){
@@ -210,6 +213,32 @@ RadialChart.prototype.updateVis = function () {
 				
 		);
 
+		for (var i = 0; i < vis.features.length; i++) {	
+			let angle = (Math.PI / 2) + (2 * Math.PI * i / vis.features.length);
+			let line_coordinate = vis.angleToCoordinate(angle-20, vis.radialScale(11.5));
+	
+			vis.ticks.forEach(function(t,k) {
+				if (k===0)
+				{
+				vis.svg.append("text")
+				.attr("x",vis.center_x +(line_coordinate.x - vis.center_x)*(k+1)*0.18)
+				.attr("y", vis.center_y +(line_coordinate.y - vis.center_y)*(k+1)*0.18)
+				.attr("fill","white")
+				.style("font-size","8px")
+				.text(String(feat_max_min[i][0]*0.9).substring(0,4 ));
+				
+				}else if(k==4){
+					vis.svg.append("text")
+					.attr("x",vis.center_x +(line_coordinate.x - vis.center_x)*(k+1)*0.18)
+					.attr("y", vis.center_y +(line_coordinate.y - vis.center_y)*(k+1)*0.18)
+					.attr("fill","white")
+					.style("font-size","8px")
+					.text(String(feat_max_min[i][1]*1.1).substring(0,4));
+					
+				}
+			});
+		}
+
 		//LEGEND
 		// Add one dot in the legend for each name.
 	vis.svg_legend.selectAll('.legend-radial')
@@ -218,7 +247,7 @@ RadialChart.prototype.updateVis = function () {
 			enter => enter
 				.append("circle")
 				.attr('class', 'legend-radial')
-				.attr("cx", 20)
+				.attr("cx", 10)
 				.attr("cy", function(d,i){return 10 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
 				.attr("r", 7)
 				.style("fill", function(d,i){ return color(colors[i])})
@@ -300,7 +329,7 @@ RadialChart.prototype.updateVis = function () {
 	////////////////////////////////////////////////////////////
 
 	check = d3.select("#checklist_games");
-	check = vis.div_check
+
 
 	check.selectAll('div')
 		.data(vis.dataFiltered)

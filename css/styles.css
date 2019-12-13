@@ -96,7 +96,8 @@ rect.selection {
 }
 
 .selected-body {
-  overflow: clip;
+  height: 400px;
+  overflow-y: scroll;
   font-size: 0.6em;
   cursor: auto;
   text-align: auto;
@@ -158,6 +159,7 @@ h2{
   stroke-width: 2px;
   stroke-dasharray: 3,3;
 }
+
 div.tooltip {
   color: white;
   position: absolute;
@@ -172,7 +174,7 @@ div.tooltip {
   pointer-events: none;
 }
 #div_checks {
-  height: 150px;
+  height: auto;
   overflow-y: scroll;
   cursor: auto;
   text-align: auto;
@@ -185,3 +187,4 @@ div.tooltip {
   text-align: auto;
   
 }
+

@@ -135,7 +135,7 @@ BubbleChart.prototype.updateVis = function () {
     ;
 
     vis.elem.select('text')
-        .attr("dy", ".-0.1em")
+        .attr("dy", "-0.1em")
         .style("text-anchor", "middle")
         .style("font-size", function (d) {
             if (vis.mechs_cat == "top_mechanic_idx") {
