@@ -106,6 +106,9 @@ ScatterChart.prototype.wrangleData = function () {
         return ((d.year >= vis.minValue) && (d.year <= vis.maxValue))
     })
 
+    console.log(selectedClickedCat);
+    console.log(selectedClickedMechs);
+
     if(selectedClickedMechs.size!=0 && selectedClickedCat.size===0){
         vis.dataFiltered = vis.dataFiltered.filter(function(d){
             return selectedClickedMechs.has(String(d["top_mechanic_idx"]));
