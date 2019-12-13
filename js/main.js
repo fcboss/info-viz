@@ -6,7 +6,7 @@ var scatterChart,
     radialChart;
 var filteredData = {};
 var topData = {};
-var variable_chosen="top_mechanic_idx";
+var variable_chosen = "top_mechanic_idx";
 var minvalue = 1960;
 var maxvalue = 2018;
 var selectedClickedMechs = new Set();
@@ -23,9 +23,24 @@ d3.selectAll("#var-selecty").on("change", function () {
 
 d3.selectAll("#mechs_cat").on("change", function () {
     variable_chosen = d3.select('#mechs_cat')
-    .property('value');
+        .property('value');
     bubbleChart.wrangleData();
 })
+
+d3.selectAll('button').on('click', function () {
+    d3.selectAll('g.node')
+        .each(function (d) {
+            d3.select(this).selectAll('#data')
+                    .style('stroke-width', '0px');
+            });
+    selectedClickedMechs.clear();
+    selectedClickedCat.clear();
+
+    scatterChart.wrangleData();
+    radialChart.wrangleData();
+
+})
+
 
 d3.selectAll('#scattervalues').on("change", function () {
     minvalue = Number(document.getElementById('labelleft').innerHTML);
@@ -55,7 +70,7 @@ d3.json('data//board_games_mechs_cats.json').then(res => {
     bubbleChart = new BubbleChart('#bubble');
     radialChart = new RadialChart('#radial-struc');
 
-    
+
 
     d3.selectAll('g.node')
         .each(function (d) {
@@ -70,12 +85,12 @@ d3.json('data//board_games_mechs_cats.json').then(res => {
                     scatterChart.wrangleData();
                     radialChart.wrangleData();
                 }
-                else if (variable_chosen== "top_category_idx") {
+                else if (variable_chosen == "top_category_idx") {
                     selectedClickedCat.add(d.key);
                     scatterChart.wrangleData();
                     radialChart.wrangleData();
                 }
+            });
         });
-});
 
 });

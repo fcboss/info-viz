@@ -7,14 +7,14 @@ ScatterChart = function (_parentElement) {
 ScatterChart.prototype.initVis = function () {
     var vis = this;
 
-    vis.margin = { top: 5, right: 0, bottom: 10, left: 40 };
+    vis.margin = { top: 0, right: 0, bottom: 10, left: 40 };
     vis.width = 500 - vis.margin.right - vis.margin.left;
     vis.height = 380 - vis.margin.top - vis.margin.bottom;
 
     vis.svg = d3.select(vis.parentElement)
         .append("svg")
         .attr("preserveAspectRatio", "xMinYMin meet")
-        .attr("viewBox", "-45 -45 580 470")
+        .attr("viewBox", "-45 -45 580 450")
         .classed("svg-content-responsive", true)
         .append('g')
         .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
@@ -102,12 +102,12 @@ ScatterChart.prototype.wrangleData = function () {
     vis.mechs_cat = d3.select('#mechs_cat')
     .property('value');
 
-    console.log(selectedClickedMechs);
-    console.log(selectedClickedCat);
-
     vis.dataFiltered = filteredData.filter(function (d) {
         return ((d.year >= vis.minValue) && (d.year <= vis.maxValue))
     })
+
+    console.log(selectedClickedCat);
+    console.log(selectedClickedMechs);
 
     if(selectedClickedMechs.size!=0 && selectedClickedCat.size===0){
         vis.dataFiltered = vis.dataFiltered.filter(function(d){
@@ -140,7 +140,7 @@ function mouseover() {
     d3.selectAll('.scatter')
         .filter(d => d.rank === selectedID)
         .transition()
-        .attr('r', 12);
+        .attr('r', 16);
 }
 
 function mouseout() {
@@ -298,12 +298,17 @@ ScatterChart.prototype.updateVis = function () {
         case 'avg_rating': vis.newyLabel = "Average Rating"; break;
         case 'geek_rating': vis.newyLabel = "Geek Rating"; break;
         case 'num_fans': vis.newyLabel = "Number of fans"; break;
+        case 'weight': vis.newyLabel = "Complexity"; break;
+        case 'owned': vis.newyLabel = "Owned"; break;
         default: ''
     }
 
     switch (vis.xVariable) {
         case 'weight': vis.newxLabel = "Complexity"; break;
         case 'owned': vis.newxLabel = "Owned"; break;
+        case 'avg_rating': vis.newxLabel = "Average Rating"; break;
+        case 'geek_rating': vis.newxLabel = "Geek Rating"; break;
+        case 'num_fans': vis.newxLabel = "Number of fans"; break;
         default: ''
     }
 

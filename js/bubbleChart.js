@@ -15,8 +15,8 @@ BubbleChart.prototype.initVis = function () {
         0: 'Adventure', 1: 'Exploration', 2: 'Fantasy', 3: 'Fighting', 4: 'Miniatures', 5: 'Environmental', 6: 'Medical', 7: 'Card Game', 8: 'Civilization', 9: 'Economic', 10: 'Industry / Manufacturing', 11: 'Science Fiction', 12: 'Space Exploration', 13: 'Territory Building', 14: 'Modern Warfare', 15: 'Political', 16: 'Wargame', 17: 'Movies / TV / Radio theme', 18: 'American West', 19: 'Animals', 20: 'Negotiation', 21: 'Novel-based', 22: 'Dice', 23: 'Medieval', 24: 'Ancient', 25: 'City Building', 26: 'Age of Reason', 27: 'Mythology', 28: 'Renaissance', 29: 'Farming', 30: 'Collectible Components', 31: 'Horror', 32: 'Nautical', 33: 'Transportation', 34: 'Murder/Mystery', 35: 'Puzzle', 36: 'Religious', 37: 'Travel', 38: 'Video Game Theme', 39: 'Mature / Adult', 40: 'Abstract Strategy', 41: 'Bluffing', 42: 'Prehistoric', 43: 'Arabian', 44: 'Deduction', 45: 'Party Game', 46: 'Spies/Secret Agents', 47: 'Word Game', 48: 'Post-Napoleonic', 49: 'Trains', 50: 'Aviation / Flight', 51: 'Zombies', 52: 'Action / Dexterity', 53: 'Real-time', 54: 'World War II', 55: 'World War I', 56: 'Comic Book / Strip', 57: 'Civil War', 58: 'none', 59: 'Humor', 60: 'Racing', 61: 'Electronic', 62: 'Print & Play', 63: 'Book', 64: 'Maze', 65: 'Pirates', 66: 'Expansion for Base-game', 67: 'Sports', 68: 'Educational', 69: 'American Indian Wars', 70: 'American Revolutionary War', 71: 'Memory', 72: 'Napoleonic', 73: 'Game System', 74: 'Mafia', 75: "Children's Game", 76: 'American Civil War', 77: 'Vietnam War', 78: 'Pike and Shot', 79: 'Trivia', 80: 'Number', 81: 'Math'
     };
 
-    vis.width = 500;
-    vis.height = 530;
+    vis.width = 470;
+    vis.height = 450;
     vis.color = d3.scaleOrdinal(d3.schemeSet1);
     vis.div = d3
         .select('body')
@@ -30,7 +30,7 @@ BubbleChart.prototype.initVis = function () {
         .attr("height", vis.height);
 
     vis.simulation = d3.forceSimulation()
-        .force("x", d3.forceX(vis.width / 2).strength(0.05))
+        .force("x", d3.forceX((vis.width / 2)+15).strength(0.05))
         .force("y", d3.forceY(vis.height / 2).strength(0.05));
 
 

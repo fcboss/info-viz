@@ -11,7 +11,7 @@ YearChart.prototype.initVis = function () {
 
 
   vis.w = 920
-  vis.h = 180
+  vis.h = 160
   vis.margin = {
     top: 30,
     bottom: 70,
@@ -30,7 +30,7 @@ YearChart.prototype.initVis = function () {
 
   vis.svg = d3.select(vis.parentElement).append("svg")
     .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "-50 10 900 180");
+    .attr("viewBox", "-50 10 900 120");
 
   vis.g = vis.svg.append('g').attr('transform', `translate(${vis.margin.left}, ${vis.margin.top})`)
 
