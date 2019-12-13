@@ -5,11 +5,11 @@ RadialChart = function (_parentElement) {
 };
 
 RadialChart.prototype.initVis = function () {
-    var vis = this;
+	var vis = this;
 
 	vis.svg = d3.select(vis.parentElement).append("svg")
-		.attr("width", 310)
-		.attr("height", 300);
+		.attr("width", 300)
+		.attr("height", 310);
 	vis.svg_legend = d3.select(vis.parentElement).append("svg")
 		.attr("width", 400)
 		.attr("height", 125)
@@ -98,11 +98,19 @@ RadialChart.prototype.wrangleData = function () {
         return ((d.year >= vis.minValue) && (d.year <= vis.maxValue))
     })
 
-    if(selectedClickedMechs.size!=0){
+    if(selectedClickedMechs.size!=0 && selectedClickedCat.size===0){
         vis.dataFiltered = vis.dataFiltered.filter(function(d){
-            return selectedClickedMechs.has(String(d[vis.mechs_cat]));
+            return selectedClickedMechs.has(String(d["top_mechanic_idx"]));
+        }) 
+    }else if(selectedClickedMechs.size===0 && selectedClickedCat.size!=0){
+        vis.dataFiltered = vis.dataFiltered.filter(function(d){
+            return selectedClickedCat.has(String(d["top_category_idx"]));
         })
-    }
+    }else if(selectedClickedMechs.size!=0 && selectedClickedCat.size!=0){
+        vis.dataFiltered = vis.dataFiltered.filter(function(d){
+            return selectedClickedCat.has(String(d["top_category_idx"])) && selectedClickedMechs.has(String(d["top_mechanic_idx"])) ;
+        })
+        }
     
     vis.dataFiltered = vis.dataFiltered.slice(0,3);
 

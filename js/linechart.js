@@ -17,7 +17,7 @@ LineChart.prototype.initVis = function () {
     vis.svg = d3.select(vis.parentElement)
         .append("svg")
         .attr("preserveAspectRatio", "xMinYMin meet")
-        .attr("viewBox", "-20 -30 580 380")
+        .attr("viewBox", "-20 -30 590 380")
     vis.g = vis.svg.append("g")
         .attr("transform", "translate(" + vis.margin.left +
             ", " + vis.margin.top + ")");
@@ -127,9 +127,6 @@ LineChart.prototype.wrangleData = function () {
 LineChart.prototype.updateVis = function () {
     var vis = this;
 
-
-
-
     vis.x.domain(d3.extent(vis.dataFiltered, function (d) { return d.year; }));
     vis.y.domain([d3.min(vis.dataFiltered, function (d) { return d.value; }) / 1.005,
     d3.max(vis.dataFiltered, function (d) { return d.value; }) * 1.005]);
@@ -162,9 +159,9 @@ LineChart.prototype.updateVis = function () {
         .attr("r", 7.5);
 
     focus.append("text")
-        .attr("x", 15)
+        .attr("x", -75)
         .attr("y", -20)
-        .attr("dy", ".31em");
+        .attr("dy", "0.1em");
 
     var line = d3.line()
         .x(function (d) { return vis.x(d.year); })
@@ -190,16 +187,12 @@ LineChart.prototype.updateVis = function () {
             d0 = vis.dataFiltered[i - 1],
             d1 = vis.dataFiltered[i],
             d = (d1 && d0) ? (x0 - d0.year > d1.year - x0 ? d1 : d0) : 0;
-        //console.log(x0);
-        //console.log(i);
-        //console.log(d0);
-        //console.log(d1);
-        //console.log(d);
+       
         focus.attr("transform", "translate(" + vis.x(d.year) + "," + vis.y(d.value) + ")");
         focus.select("text")
             .style('fill', 'white')
-            .style('font-weight', '8px')
-            .text(function () { return "(" + new Date(d.year.toString()).getFullYear() + ' ,' + d.value + ")"; });
+            .style('font-weight', '7px')
+            .text(function () { return "(Year: " + new Date(d.year.toString()).getFullYear() + ' ,' +"Value: "+ d.value + ")"; });
         focus.select(".x-hover-line").attr("y2", vis.height - vis.y(d.value));
         focus.select(".y-hover-line").attr("x2", -vis.x(d.year));
     }

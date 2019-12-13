@@ -49,11 +49,18 @@
             </div>
             <div class="col-lg-4 col-md-3 col-sm-6 my-col">
                 <div class="row my-row">
-                    <div class="col-lg-4 col-md-2 col-sm-6 col-xs-12 col-12 my-col">
+                    <div class="col-lg-3 col-md-2 col-sm-6 col-xs-12 col-12 my-col">
                         <div>
-                            <span>Change the y Axis</span>
-                            <div class="box">
-                                <select id="var-selecty">
+                            <span style="margin-left: 30px;">Change the x Axis</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 3px;" class="col-lg-3 col-md-10 col-sm-6 col-xs-12 col-12 my-col">
+                        <div>
+                            <div style="float: left; margin-right: 35px;" class="box">
+                                <select id="var-selectx">
+                                    <option selected value="weight">Complexity</option>
+                                    <option value="owned">Onwned</option>
                                     <option selected value="avg_rating">Avg Rating</option>
                                     <option value="geek_rating">Geek Rating</option>
                                     <option value="num_fans">Nº of fans</option>
@@ -61,15 +68,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-10 col-sm-6 col-xs-12 col-12 my-col">
+                    <div class="col-lg-3 col-md-10 col-sm-6 col-xs-12 col-12 my-col">
                         <div>
-                            <span>Change the x Axis</span>
-                            <div class="box">
-                                <select id="var-selectx">
-                                    <option selected value="weight">Complexity</option>
-                                    <option value="owned">Onwned</option>
-                                </select>
-                            </div>
+                            <span style="margin-left: 28px;">Change the y Axis</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 3px;" class="col-lg-3 col-md-10 col-sm-6 col-xs-12 col-12 my-col">
+                        <div style="float: left; margin-right: 45px;" class="box">
+                            <select id="var-selecty">
+                                <option selected value="avg_rating">Avg Rating</option>
+                                <option value="geek_rating">Geek Rating</option>
+                                <option value="num_fans">Nº of fans</option>
+                                <option selected value="weight">Complexity</option>
+                                <option value="owned">Onwned</option>
+                            </select>
                         </div>
                     </div>
                 </div>
