@@ -140,7 +140,7 @@ function mouseover() {
     d3.selectAll('.scatter')
         .filter(d => d.rank === selectedID)
         .transition()
-        .attr('r', 12);
+        .attr('r', 16);
 }
 
 function mouseout() {
