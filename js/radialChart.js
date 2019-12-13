@@ -62,7 +62,7 @@ RadialChart.prototype.initVis = function () {
 		//vis.feat_axis[i].domain(Array(feat_max_min[i][0]*0.8,feat_max_min[i][1]*1.2))
 		//.range([0,100]);
 
-
+		if(i==4){ft_name="complexity"}
 
 
 		//draw axis line
@@ -172,7 +172,7 @@ RadialChart.prototype.updateVis = function () {
 				.attr("d",line)
 				.attr("fill",(d,i) => color(colors[i]))
 				.attr("fill-opacity", 0.3)
-				.attr("stroke-width", 1)
+				.attr("stroke-width", 2)
 				.attr("stroke", (d,i) => color(colors[i]))
 				.attr("stroke-opacity", 1)
 				.on('mouseover', function (d,i){
@@ -205,7 +205,7 @@ RadialChart.prototype.updateVis = function () {
 				.transition()
                 .duration(700)
 				.attr("d",line)
-				.attr("stroke-width", 3)
+				.attr("stroke-width", 2)
 				.attr("stroke", (d,i) => color(colors[i]))
 				.attr("fill",(d,i) => color(colors[i]))
 				.attr("stroke-opacity", 1)
@@ -223,21 +223,27 @@ RadialChart.prototype.updateVis = function () {
 
 		for (var i = 0; i < vis.features.length; i++) {	
 			let angle = (Math.PI / 2) + (2 * Math.PI * i / vis.features.length);
-			let line_coordinate = vis.angleToCoordinate(angle-20, vis.radialScale(11.5));
-	
+			let line_coordinate = vis.angleToCoordinate(angle-15, vis.radialScale(11.5));
+			
+
 			vis.ticks.forEach(function(t,k) {
+				let aux1 = 0;
+				let aux2 = 0;
+				if(i==2){aux1=5;aux2=10;}
+				if(i==3){aux1=0;aux2=-10}
+
 				if (k===0)
 				{
 				vis.svg.append("text")
-				.attr("x",vis.center_x +(line_coordinate.x - vis.center_x)*(k+1)*0.18)
+				.attr("x",vis.center_x +(line_coordinate.x - vis.center_x)*(k+1)*0.18+ aux1)
 				.attr("y", vis.center_y +(line_coordinate.y - vis.center_y)*(k+1)*0.18)
 				.attr("fill","white")
 				.style("font-size","8px")
 				.text(String(feat_max_min[i][0]*0.9).substring(0,4 ));
-				
+		
 				}else if(k==4){
 					vis.svg.append("text")
-					.attr("x",vis.center_x +(line_coordinate.x - vis.center_x)*(k+1)*0.18)
+					.attr("x",vis.center_x +(line_coordinate.x - vis.center_x)*(k+1)*0.18 + aux2)
 					.attr("y", vis.center_y +(line_coordinate.y - vis.center_y)*(k+1)*0.18)
 					.attr("fill","white")
 					.style("font-size","8px")
