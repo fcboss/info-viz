@@ -16,7 +16,7 @@ RadialChart.prototype.initVis = function () {
 		.attr("height", 300);
 	vis.svg_legend = d3.select(vis.parentElement).append("svg")
 		.attr("width", 400)
-		.attr("height", 125)
+		.attr("height", 200)
 		.attr("id","svg_legend");
 
 	vis.div_check = d3.select(vis.parentElement).append("div")
@@ -130,8 +130,6 @@ RadialChart.prototype.updateVis = function () {
 		
 	}
 	
-
-
 
     let line = d3.line()
     .x(d => d.x)
@@ -283,7 +281,7 @@ RadialChart.prototype.updateVis = function () {
 				}),
 			update => update
 				.attr('class', 'legend-radial')
-				.attr("cx", 20)
+				.attr("cx", 10)
 				.attr("cy", function(d,i){return 10 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
 				.attr("r", 7)
 				.style("fill", function(d,i){ return color(colors[i])}),
@@ -469,7 +467,7 @@ RadialChart.prototype.updateVis = function () {
                 return false
             })
             .attr("rank",(d)=>d.rank)
-            .attr("type", "checkbox")
+			.attr("type", "checkbox")
             .attr("class","game-check-search"),
         exit => exit
             .transition()

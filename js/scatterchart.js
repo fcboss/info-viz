@@ -23,7 +23,7 @@ ScatterChart.prototype.initVis = function () {
 
     vis.color = d3.scaleThreshold()
         .domain([5, 9, 12, 14])
-        .range(["#edf8fb", "#b3cde3", "#8c96c6", "#88419d"]);
+        .range(["#3fc5f0", "#42dee1", "#6decb9", "#eef5b2"]);
 
     vis.header = vis.svg
         .append('g')
@@ -75,10 +75,10 @@ ScatterChart.prototype.initVis = function () {
         .attr('class', 'scatter-points');
 
 
-    vis.svg.append("circle").attr("cx", 390).attr("cy", -28).attr("r", 4).style("fill", "#edf8fb")
-    vis.svg.append("circle").attr("cx", 390).attr("cy", -14).attr("r", 4).style("fill", "#b3cde3")
-    vis.svg.append("circle").attr("cx", 390).attr("cy", -1).attr("r", 4).style("fill", "#8c96c6")
-    vis.svg.append("circle").attr("cx", 390).attr("cy", 12).attr("r", 4).style("fill", "#88419d")
+    vis.svg.append("circle").attr("cx", 390).attr("cy", -28).attr("r", 4).style("fill", "#3fc5f0")
+    vis.svg.append("circle").attr("cx", 390).attr("cy", -14).attr("r", 4).style("fill", "#42dee1")
+    vis.svg.append("circle").attr("cx", 390).attr("cy", -1).attr("r", 4).style("fill", "#6decb9")
+    vis.svg.append("circle").attr("cx", 390).attr("cy", 12).attr("r", 4).style("fill", "#eef5b2")
     vis.svg.append("text").attr("x", 410).attr("y", -28).text("0-5 years").style("font-size", "12px").style('fill','white').attr("alignment-baseline", "middle");
     vis.svg.append("text").attr("x", 410).attr("y", -14).text("5-9 years").style("font-size", "12px").style('fill','white').attr("alignment-baseline", "middle");
     vis.svg.append("text").attr("x", 410).attr("y", -1).text("12-14 years").style("font-size", "12px").style('fill','white').attr("alignment-baseline", "middle");

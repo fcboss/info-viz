@@ -16,7 +16,7 @@ BubbleChart.prototype.initVis = function () {
     };
 
     vis.width = 470;
-    vis.height = 450;
+    vis.height = 370;
     vis.color = d3.scaleOrdinal(d3.schemeSet1);
     vis.div = d3
         .select('body')
@@ -30,8 +30,9 @@ BubbleChart.prototype.initVis = function () {
         .attr("height", vis.height);
 
     vis.simulation = d3.forceSimulation()
-        .force("x", d3.forceX((vis.width / 2)+15).strength(0.05))
-        .force("y", d3.forceY(vis.height / 2).strength(0.05));
+      .force("x", d3.forceX(vis.width / 2).strength(0.05))
+      .force("y", d3.forceY(vis.height / 2 +11).strength(0.05))
+
 
 
     vis.wrangleData();
@@ -69,7 +70,7 @@ BubbleChart.prototype.updateVis = function () {
 
     vis.min = d3.min(vis.nested_data, function (d) { return d.value; }),
         vis.max = d3.max(vis.nested_data, function (d) { return d.value; }),
-        vis.radiusScale = d3.scaleSqrt().domain([vis.min, vis.max]).range([20, 65]);
+        vis.radiusScale = d3.scaleSqrt().domain([vis.min, vis.max]).range([14, 62]);
 
     vis.simulation.force("collide", d3.forceCollide(function (d) {
         return vis.radiusScale(d.value)

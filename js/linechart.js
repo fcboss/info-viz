@@ -31,7 +31,7 @@ LineChart.prototype.initVis = function () {
     vis.header.append('tspan').text('Nº of Board Games Evolution since 1960')
         .attr('dy', '1em')
         .attr('dx', '1em')
-        .style('font-size', '14px')
+        .style('font-size', '12px')
         .style('fill', 'white');
 
     vis.t = function () { return d3.transition().duration(1000); }
@@ -168,7 +168,7 @@ LineChart.prototype.updateVis = function () {
         .y(function (d) { return vis.y(d.value); });
 
     vis.g.select(".line")
-        .attr("stroke", '#88419d')
+        .attr("stroke", 'rgb(55, 126, 184)')
         .transition(vis.t)
         .attr("d", line(vis.dataFiltered));
 

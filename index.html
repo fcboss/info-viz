@@ -5,7 +5,7 @@
     <title>Board Games</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
         integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/jquery-ui.min.css">
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Permanent+Marker&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
@@ -13,18 +13,18 @@
 
 <body>
     <div class="container-fluid">
-        <div class="row my-row">
-            <div class="col-12 my-col">
+        <div class="row">
+            <div class="col-12">
                 <span>
                     <h6>Board Games</h6>
                 </span>
             </div>
         </div>
         <div class="row my-row">
-            <div class="col-lg-4 col-md-8 col-sm-6 my-col">
-                <div class="row my-row">
+            <div class="col-lg-4 col-md-8 col-sm-6">
+                <div class="row">
                     <div>
-                        <div style="color: white;">Filter your Favourite Category/Mechanic</div>
+                        <div style="color: white;"><p>Filter your Favourite Category/Mechanic</p></div>
                         <div style="float: left;" class="box">
                             <select id="mechs_cat">
                                 <option selected value="top_mechanic_idx">Mechanics</option>
@@ -38,10 +38,10 @@
                 </div>
                 <div id="bubble"></div>
             </div>
-            <div class="col-lg-4 col-md-2 col-sm-6 my-col">
+            <div class="col-lg-4 col-md-2 col-sm-6">
                 <div id="my_dataviz"></div>
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 my-col">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
 
                         <h5>Year Range</h5>
                         <div id="eventhandler"></div>
@@ -50,17 +50,17 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-3 col-sm-6 my-col">
-                <div class="row my-row">
-                    <div class="col-lg-3 col-md-2 col-sm-6 col-xs-12 col-12 my-col">
+            <div class="col-lg-4 col-md-3 col-sm-6">
+                <div class="row">
+                    <div class="col-lg-3 col-md-2 col-sm-6 col-xs-12 col-12">
                         <div>
-                            <span style="margin-left: 30px;">Change the x Axis</span>
+                            <span style="margin-left: 75px;">x Axis</span>
                         </div>
                     </div>
                     
-                    <div style="margin-top: 3px;" class="col-lg-3 col-md-10 col-sm-6 col-xs-12 col-12 my-col">
+                    <div style="margin-top: 3px;" class="col-lg-3 col-md-10 col-sm-6 col-xs-12 col-12">
                         <div>
-                            <div style="float: left; margin-right: 35px;" class="box">
+                            <div style="float: left; margin-right: 65px;" class="box">
                                 <select id="var-selectx">
                                     <option selected value="weight">Complexity</option>
                                     <option value="owned">Onwned</option>
@@ -71,13 +71,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-10 col-sm-6 col-xs-12 col-12 my-col">
+                    <div class="col-lg-3 col-md-10 col-sm-6 col-xs-12 col-12">
                         <div>
-                            <span style="margin-left: 28px;">Change the y Axis</span>
+                            <span style="margin-left: 79px;">y Axis</span>
                         </div>
                     </div>
-                    <div style="margin-top: 3px;" class="col-lg-3 col-md-10 col-sm-6 col-xs-12 col-12 my-col">
-                        <div style="float: left; margin-right: 45px;" class="box">
+                    <div style="margin-top: 2px;" class="col-lg-3 col-md-10 col-sm-6 col-xs-12 col-12">
+                        <div  class="box">
                             <select id="var-selecty">
                                 <option selected value="avg_rating">Avg Rating</option>
                                 <option value="geek_rating">Geek Rating</option>
@@ -91,16 +91,17 @@
                 <div id="scatterchart"></div>
             </div>
         </div>
-        <div class="row my-row">
-            <div class="col-lg-4 col-md-6 col-sm-6 my-col">
-                TOP 3 and compare
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <p>TOP 3 and Compare</p>
                 <div id="radial-struc"></div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6 my-col">
-                <div id="checklist_games"></div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div style="margin-top: 3px;"id="checklist_games"></div>
                 <div><svg height = "30"></svg></div>
+                <p>Search</p>
                 <input type="text" id="filterOn" />
-                <div id="filteredList"></div>
+                <div style="margin-top: 10px;" id="filteredList"></div>
                 
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6 my-col">
