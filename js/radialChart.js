@@ -55,7 +55,7 @@ RadialChart.prototype.initVis = function () {
 		let ft_name = vis.features[i];
 		let angle = (Math.PI / 2) + (2 * Math.PI * i / vis.features.length);
 		let line_coordinate = angleToCoordinate(angle, vis.radialScale(11.5));
-		let label_coordinate = angleToCoordinate(angle, vis.radialScale(13));
+		let label_coordinate = angleToCoordinate(angle, vis.radialScale(14));
 
 		vis.feat_axis.push( d3.scaleLinear().range([0,100]));
 		//feat_max_min.push(d3.extent(data, function (d) { return d[ft_name]; }))
@@ -75,10 +75,10 @@ RadialChart.prototype.initVis = function () {
 	
 		//draw axis label
 		vis.svg.append("text")
-		.attr("x", label_coordinate.x)
-		.attr("y", label_coordinate.y)
+		.attr("x", label_coordinate.x-17)
+		.attr("y", label_coordinate.y+10)
 		.attr("fill","white")
-		.attr("font-size","10px")
+		.attr("font-size","12px")
 		.text(ft_name);
     }
     
@@ -163,9 +163,9 @@ RadialChart.prototype.updateVis = function () {
 					
 					return "path"+d.rank.toString()
 				})
-				.datum(function (d){
-					
-					return getPathCoordinates(d)
+				.datum(function (d,i){
+					path = getPathCoordinates(d)						
+					return path
 				})
 				.attr("d",line)
 				.attr("fill",(d,i) => color(colors[i]))
@@ -198,7 +198,10 @@ RadialChart.prototype.updateVis = function () {
 				})
 				.datum(function (d){
 					
-					return getPathCoordinates(d)
+					path = getPathCoordinates(d)
+					
+
+						return path
 				})
 				.transition()
                 .duration(700)
@@ -211,7 +214,12 @@ RadialChart.prototype.updateVis = function () {
                 .on("end", function () {
 
                 }),
-            exit => exit
+			exit => exit
+			.datum(function (d){
+					
+				path = getPathCoordinates(d)
+					return path
+			})
                 .transition()
                 .duration(500)
                 .style('opacity', 1e-6)
@@ -219,15 +227,19 @@ RadialChart.prototype.updateVis = function () {
 				
 		);
 
+		
+
 		for (var i = 0; i < vis.features.length; i++) {	
 			let angle = (Math.PI / 2) + (2 * Math.PI * i / vis.features.length);
-			let line_coordinate = vis.angleToCoordinate(angle-15, vis.radialScale(11.5));
+			let line_coordinate = vis.angleToCoordinate(angle+0.15, vis.radialScale(11.5));
 			
 
 			vis.ticks.forEach(function(t,k) {
 				let aux1 = 0;
 				let aux2 = 0;
-				if(i==2){aux1=5;aux2=10;}
+				if(i==0){aux1=5;aux2=20;}
+				if(i==1){aux1=3;aux2=0;}
+				if(i==2){aux1=0;aux2=0;}
 				if(i==3){aux1=0;aux2=-10}
 
 				if (k===0)
