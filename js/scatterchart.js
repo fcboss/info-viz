@@ -22,7 +22,7 @@ ScatterChart.prototype.initVis = function () {
     vis.t = function () { return d3.transition().duration(1000); }
 
     vis.color = d3.scaleThreshold()
-        .domain([5, 9, 12, 14])
+        .domain([5, 9, 14])
         .range(["#3fc5f0", "#42dee1", "#6decb9", "#eef5b2"]);
 
     vis.header = vis.svg
@@ -81,7 +81,7 @@ ScatterChart.prototype.initVis = function () {
     vis.svg.append("circle").attr("cx", 390).attr("cy", 12).attr("r", 4).style("fill", "#eef5b2")
     vis.svg.append("text").attr("x", 410).attr("y", -28).text("0-5 years").style("font-size", "12px").style('fill','white').attr("alignment-baseline", "middle");
     vis.svg.append("text").attr("x", 410).attr("y", -14).text("5-9 years").style("font-size", "12px").style('fill','white').attr("alignment-baseline", "middle");
-    vis.svg.append("text").attr("x", 410).attr("y", -1).text("12-14 years").style("font-size", "12px").style('fill','white').attr("alignment-baseline", "middle");
+    vis.svg.append("text").attr("x", 410).attr("y", -1).text("9-14 years").style("font-size", "12px").style('fill','white').attr("alignment-baseline", "middle");
     vis.svg.append("text").attr("x", 410).attr("y", 12).text(">14 years").style("font-size", "12px").style('fill','white').attr("alignment-baseline", "middle")
 
     vis.wrangleData();
@@ -125,7 +125,7 @@ ScatterChart.prototype.wrangleData = function () {
     vis.svg.selectAll(".brush").remove();
     vis.svg.selectAll(".scatter")
         .style('fill', d => vis.color(d.age))
-        .style('fill-opacity', 0.6);
+        .style('fill-opacity', 0.7);
 
     updateSelected(vis.dataFiltered);
 
@@ -193,6 +193,7 @@ function updateSelected(data) {
                             + "<h2 class='card-title'>" + d.names + ", " + d.year + "</h2>"
                             + "<p class='card-text'>Category: " + category[d.top_category_idx] + "</p>"
                             + "<p class='card-text'>Mechanics: " + mechanic[d.top_mechanic_idx]+ "</p>"
+                            + "<p class='card-text'>Age: " + d.age+ "</p>"
                             + "<p class='card-text'>Avg_time: " + d.avg_time + " minutes" + "</p>"
                             + "<p class='card-text'>Min Players: " + d.min_players + " | Max Players: " + d.max_players + "</p>"
                             + "<p class='card-text'>Publisher: " + d.publisher + "</p>"
@@ -273,12 +274,12 @@ ScatterChart.prototype.updateVis = function () {
                 .attr('cy', d => vis.yScale(d[vis.yVariable]))
                 .attr('r', 3)
                 .style('fill', d => vis.color(d.age))
-                .style('fill-opacity', 0.6),
+                .style('fill-opacity', 0.7),
             update => update
                 .transition()
                 .duration(700)
                 .style('fill', d => vis.color(d.age))
-                .style('fill-opacity', 0.6) 
+                .style('fill-opacity', 0.7) 
                 .ease(d3.easeCircle)
                 .attr("cx", function (d) {
                     return vis.xScale(d[vis.xVariable]);
