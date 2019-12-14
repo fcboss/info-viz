@@ -106,8 +106,6 @@ ScatterChart.prototype.wrangleData = function () {
         return ((d.year >= vis.minValue) && (d.year <= vis.maxValue))
     })
 
-    console.log(selectedClickedCat);
-    console.log(selectedClickedMechs);
 
     if(selectedClickedMechs.size!=0 && selectedClickedCat.size===0){
         vis.dataFiltered = vis.dataFiltered.filter(function(d){
@@ -154,7 +152,11 @@ function mouseout() {
 
 function mouseclick(){
     const data_clicked = d3.select(this).data()[0]
-    radialChart.dataFiltered.indexOf(data_clicked) === -1 ? radialChart.dataFiltered.push(data_clicked) : console.log("This item already exists");
+    radialChart.dataFiltered.indexOf(data_clicked) === -1 ? radialChart.dataFiltered.push(data_clicked) : 
+    Swal.fire({
+        title: 'Oops...',
+        text: 'The item already exists in the radial Chart!',
+      })
     
     radialChart.updateVis();
 

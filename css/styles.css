@@ -1,7 +1,7 @@
 html,body {
   height:100%;
   width: 100%;
-  font-family: 'Righteous', cursive;
+  font-family: myfont;
   background-color: #040a14;
   color: rgb(153, 153, 153);
 }
@@ -102,7 +102,7 @@ span{
 
 .selected-header {
   color: white;
-  font-family: 'Righteous', cursive;
+  font-family: myfont;
   font-size: 12px;
   text-align: center;
 }

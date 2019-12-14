@@ -3,15 +3,20 @@
 
 <head>
     <title>Board Games</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
-        integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/jquery-ui.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Pacifico|Permanent+Marker&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+
+    <style type="text/css">
+        @font-face {
+            font-family: myfont;
+            src: url(font/Righteous-Regular.ttf) format("truetype");
+        }
+    </style>
 </head>
 
 <body>
+   
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -97,7 +102,7 @@
                 <div id="radial-struc"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <div style="margin-top: 3px;"id="checklist_games"></div>
+                <div style="margin-top: 3px;" id="checklist_games"></div>
                 <div><svg height = "30"></svg></div>
                 <p>Search</p>
                 <input type="text" id="filterOn" />
@@ -113,11 +118,13 @@
         </div>
     </div>
 
-
+    
     <!--Imports-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/sweetalert2.all.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
     <script src="lib/d3.js"></script>
+    
 
     <!-- Custom JS -->
     <script src="js/scatterchart.js"></script>
